@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="">
+<head>
+<title>EggHead IO</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/bootstrap.responsive.css">
+<script src="js/lib/angular.js"></script>
+</head>
+<body>
+<input type="text" ng-model="message"/>
+{{message}}
+{{2+2|currency}}
+{{"java"+"script" | uppercase}}
+<input type="text" ng-model="message"/>
+<span class="glyphicon glyphicon-icon"></span>
+<div class="{{message}}">
+	  <div class="panel-heading">
+			<h3 class="panel-title">Panel title</h3>
+	  </div>
+	  <div class="panel-body">
+			Panel content
+	  </div>
+</div>
+
+</body>
+</html>	

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="ctrldemo">
+<head>
+    <title>EggHead IO</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<style type="text/css" media="screen">
+	.first{
+	height:200px;
+	}
+	.second{
+	height:200px;
+	}	
+	</style>
+	<script src="js/lib/angular.js"></script>
+	<script>
+	var app=angular.module('ctrldemo', []);
+	
+	app.controller('firstctrl', function($scope,$rootScope){
+	$rootScope.message1=[];
+	$scope.send=function(mess){
+		console.log("message"+mess);
+		$rootScope.message2.push(mess);
+		if($rootScope.message2.length>8){
+		$rootScope.message2.shift();
+		}
+	}
+	});
+	
+	app.controller('secondctrl', function($scope,$rootScope){
+	$rootScope.message2=[];
+	$scope.send=function(mess){
+		console.log("message"+mess);
+		$rootScope.message1.push(mess);
+		if($rootScope.message1.length>8){
+		$rootScope.message1.shift();
+		}
+	}
+	});
+</script>
+</head>
+<body>
+	
+	<div class="container">
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pull-right"  ng-controller="firstctrl">
+	<table class='table table-striped'>
+		<tr  ng-repeat="m in $root.message1 track by $id($index)"><td>{{m}}</td></tr>
+	</table>
+    <input type="text" class="form-control" ng-model="sendM">
+	<input type="submit"  ng-click="send(sendM)">
+	</div>
+
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pull-left" ng-controller="secondctrl">
+	<table class='table table-striped'>
+		<tr ng-repeat="m in $root.message2 track by $id($index)"><td>{{m}}</td></tr>
+	</table>
+	<input type="text" class="form-control" ng-model="sendM">
+	<input type="submit" ng-click="send(sendM)">
+	</div>
+	</div>
+
+</body>
+</html>	
