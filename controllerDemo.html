@@ -12,7 +12,27 @@
 	}	
 	</style>
 	<script src="js/lib/angular.js"></script>
-	<script>
+</head>
+<body>
+	
+	<div class="container">
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pull-right"  ng-controller="firstctrl">
+	<table class='table table-striped'>
+		<tr  ng-repeat="m in $root.message1 track by $id($index)"><td>{{m}}</td></tr>
+	</table>
+    <input type="text" class="form-control" ng-model="sendM">
+	<input type="submit"  ng-click="send(sendM)">
+	</div>
+
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pull-left" ng-controller="secondctrl">
+	<table class='table table-striped'>
+		<tr ng-repeat="m in $root.message2 track by $id($index)"><td>{{m}}</td></tr>
+	</table>
+	<input type="text" class="form-control" ng-model="sendM">
+	<input type="submit" ng-click="send(sendM)">
+	</div>
+	</div>
+		<script>
 	var app=angular.module('ctrldemo', []);
 	
 	app.controller('firstctrl', function($scope,$rootScope){
@@ -37,26 +57,6 @@
 	}
 	});
 </script>
-</head>
-<body>
-	
-	<div class="container">
-	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pull-right"  ng-controller="firstctrl">
-	<table class='table table-striped'>
-		<tr  ng-repeat="m in $root.message1 track by $id($index)"><td>{{m}}</td></tr>
-	</table>
-    <input type="text" class="form-control" ng-model="sendM">
-	<input type="submit"  ng-click="send(sendM)">
-	</div>
-
-	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pull-left" ng-controller="secondctrl">
-	<table class='table table-striped'>
-		<tr ng-repeat="m in $root.message2 track by $id($index)"><td>{{m}}</td></tr>
-	</table>
-	<input type="text" class="form-control" ng-model="sendM">
-	<input type="submit" ng-click="send(sendM)">
-	</div>
-	</div>
 
 </body>
 </html>	

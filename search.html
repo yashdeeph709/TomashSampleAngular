@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="friendsearch">
+<head>
+<title>EggHead IO</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap-theme.css">
+<script src="js/lib/angular.js"></script>
+</head>
+<body class="container col-md5 offset1">
+ 
+   <div>
+	 <label>show  :</label><input type="search" ng-model="word">	
+   </div>
+
+   <div ng-controller="fctrl">
+     <ul>
+    <li ng-repeat="person in people | filter:word">{{person.name}}:{{person.age}}<button ng-click="remove($index)">x</button></li>
+     </ul>
+     There are {{people.length}} in the list.
+     <br>
+    <label>Name:<input type="text" ng-model="name"></label>
+    <br>
+    <label>Age:<input type="text" ng-model="age"></label>
+    <br>
+    <input type="submit" ng-click="addperson()">
+   </div>
+   <script>
+     var app=angular.module('friendsearch',[]);
+
+     app.controller('fctrl',function($scope){
+     	$scope.people=[{
+     		name:'yashdeep',
+     		age:10
+     		},
+     		{
+     			name:'rahul',
+     			age:11
+     		},{
+     			name:'ravi',
+     			age:12
+     		},{
+     			name:'suman',
+     			age:13
+     		}];
+        $scope.addperson=function(){
+            var person={
+              name:$scope.name,
+              age:$scope.age
+            };
+            $scope.name="";
+            $scope.age="";
+            $scope.people.push(person);
+        }
+        $scope.remove=function($index){
+            $scope.people.splice($index,1);
+        }
+     }); 
+   </script>
+</body>
+</html>

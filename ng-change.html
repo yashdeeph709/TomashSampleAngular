@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="browser">
+<head>
+<title>EggHead IO</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap-theme.css">
+<script src="js/lib/angular.js"></script>
+</head>
+<body class="container col-md5 offset1" ng-controller="ctrl">
+<input type="text" value="edit/{{url}}" style="width:100%"/>
+<input type="text" ng-change="clean()" ng-model="url"/>
+<script>
+	var app=angular.module('browser',[]);
+	app.controller('ctrl', ['$scope', function ($scope){
+			$scope.clean=function(){
+					$scope.url=$scope.url.replace(/\s+/g,'-')
+											 .replace(/[^a-z0-9-]/ig,'');
+			};
+	}]);
+</script> 
+</body>
+</html>

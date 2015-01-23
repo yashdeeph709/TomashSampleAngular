@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="options">
+<head>
+<title>EggHead IO</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap-theme.css">
+<script src="js/lib/angular.js"></script>
+</head>
+<body class="container col-md5 offset1" ng-controller="ctrl">
+<select ng-model="state" ng-options="state for state in states">
+	<option value="">Choose a state</option>
+</select>
+<select ng-model="city"
+ng-options="city.city for city in cities|filter:state">
+	<option value="">Choose a city</option>
+</select>
+<div>
+<label><input type="text" ng-model="city.city" ></label><br>
+<label><input type="text" ng-model="state"></label><br>
+</div>
+<script>
+	var app=angular.module('options',[]);
+	app.controller('ctrl', function ($scope){
+		$scope.states=['mp','cg','up'];
+		$scope.cities=[{
+				state:'mp',
+				city:'indore'
+		},{
+			state:'cg',
+			city:'chickckcpur'
+		},{
+				state:'up',
+				city:'kanpur'
+		},{
+			state:'up',
+			city:'banaras'
+		},{
+				state:'mp',
+				city:'bhopal'
+		},{
+			state:'cg',
+			city:'raipur'
+		}];
+		console.log($scope);
+	});
+</script>
+</body>
+</html>
