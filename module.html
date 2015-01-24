@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="modularapp">
+<head>
+<title>EggHead IO</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap-theme.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/lib/angular.js"></script>
+</head>
+<body>
+<div class="box" ng-controller="ctrl">
+	<div>{{example}}</div>
+
+</div>
+<script>
+var app=angular.module('modularapp', []);
+
+app.controller('ctrl', ['$scope', function($scope){
+	$scope.example="Hi guys";
+}]);
+</script>
+</body>
+</html>
